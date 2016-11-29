@@ -29,6 +29,22 @@ class RequiredTest < ActionView::TestCase
     end
   end
 
+  test 'builder input allows overriding the optional class when is not required' do
+    swap SimpleForm, required_by_default: false, optional_class: :opt do
+      with_form_for @user, :name
+      assert_select 'input.opt#user_name'
+      assert_no_select 'input.optional#user_name'
+    end
+  end
+
+  test 'builder input allows overriding the optional class when is not required and set nil' do
+    swap SimpleForm, required_by_default: false, optional_class: nil do
+      with_form_for @user, :name
+      assert_select 'input#user_name'
+      assert_no_select 'input.optional#user_name'
+    end
+  end
+
   test 'when not using browser validations, input does not generate required html attribute' do
     swap SimpleForm, browser_validations: false do
       with_input_for @user, :name, :string

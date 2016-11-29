@@ -114,6 +114,10 @@ See https://github.com/plataformatec/simple_form/pull/997 for more information.
   mattr_accessor :required_by_default
   @@required_by_default = true
 
+  # The class for when the attribute is not required
+  mattr_accessor :optional_class
+  @@optional_class = :optional
+
   # Tell browsers whether to use default HTML5 validations (novalidate option).
   mattr_accessor :browser_validations
   @@browser_validations = true

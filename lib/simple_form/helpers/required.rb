@@ -28,7 +28,7 @@ module SimpleForm
       # Do not use has_required? because we want to add the class
       # regardless of the required option.
       def required_class
-        required_field? ? :required : :optional
+        required_field? ? :required : SimpleForm.optional_class
       end
     end
   end
